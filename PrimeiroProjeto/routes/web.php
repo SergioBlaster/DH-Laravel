@@ -11,13 +11,28 @@
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
+// Route::get('/', function () {
+//     return view('welcome');
+// });
+
+Route::get('/teste/{idioma?}', function ($idioma = "pt-BR") {
+    app()->setLocale($idioma);
+    return view('teste');
 });
 
+// Default
+Route::get('/', 'FilmesController@listandoFilmes');
+
 // Listar filmes
-Route::get('/listandoFilmes', 'FilmesController@listandoFilmes');
+Route::get('/filmes', 'FilmesController@listandoFilmes');
 
 // Adicionar filmes
-Route::get('/adicionandoFilmes', 'FilmesController@adicionandoFilme');
-Route::post('/adicionandoFilmes', 'FilmesController@salvandoFilme');
+Route::get('/filmes/adicionar', 'FilmesController@adicionandoFilme');
+Route::post('/filmes/adicionar', 'FilmesController@salvandoFilme');
+
+// Alterar filmes
+Route::get('/filmes/alterar/{id}', 'FilmesController@alterandoFilme');
+Route::put('/filmes/alterar/{id}', 'FilmesController@modificandoFilme');
+
+// Remover filmes
+Route::delete('/filmes/remover/{id}', 'FilmesController@removendoFilme');
