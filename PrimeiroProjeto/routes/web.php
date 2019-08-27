@@ -21,18 +21,21 @@ Route::get('/teste/{idioma?}', function ($idioma = "pt-BR") {
 });
 
 // Default
-Route::get('/', 'FilmesController@listandoFilmes');
+Route::get('/', 'FilmeController@listandoFilmes');
 
 // Listar filmes
-Route::get('/filmes', 'FilmesController@listandoFilmes');
+Route::get('/filmes', 'FilmeController@listandoFilmes');
 
 // Adicionar filmes
-Route::get('/filmes/adicionar', 'FilmesController@adicionandoFilme');
-Route::post('/filmes/adicionar', 'FilmesController@salvandoFilme');
+Route::get('/filmes/adicionar', 'FilmeController@adicionandoFilme');
+Route::post('/filmes/adicionar', 'FilmeController@salvandoFilme');
 
 // Alterar filmes
-Route::get('/filmes/alterar/{id}', 'FilmesController@alterandoFilme');
-Route::put('/filmes/alterar/{id}', 'FilmesController@modificandoFilme');
+Route::get('/filmes/alterar/{id}', 'FilmeController@alterandoFilme');
+Route::put('/filmes/alterar/{id}', 'FilmeController@modificandoFilme');
 
 // Remover filmes
-Route::delete('/filmes/remover/{id}', 'FilmesController@removendoFilme');
+Route::delete('/filmes/remover/{id}', 'FilmeController@removendoFilme');
+
+// Relacionamentos
+Route::get('/testandoRelacionamentos', 'Genero@testandoRelacionamentos');

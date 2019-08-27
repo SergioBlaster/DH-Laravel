@@ -4,15 +4,15 @@
 @section('content')
 @if ($filmes->isempty())
 <section class="row">
-        <header class="col-12">
-            <img src="https://cdn.iconscout.com/icon/free/png-256/laravel-226015.png" width="256" height="256"
-                class="d-block mx-auto my-3" alt="Laravel">
-            <h1 class="col-12 text-center">Blockbuster DH</h1>
-            <p class="col-12 d-block text-center"><b>Um projeto da hora em Laravel!</b></p>
-            <h2 class="col-12 text-center">Não há filmes disponíveis na plataforma</h2>
-        </header>
-    </section>
-@else    
+    <header class="col-12">
+        <img src="https://cdn.iconscout.com/icon/free/png-256/laravel-226015.png" width="256" height="256"
+            class="d-block mx-auto my-3" alt="Laravel">
+        <h1 class="col-12 text-center">Blockbuster DH</h1>
+        <p class="col-12 d-block text-center"><b>Um projeto da hora em Laravel!</b></p>
+        <h2 class="col-12 text-center">Não há filmes disponíveis na plataforma</h2>
+    </header>
+</section>
+@else
 <section class="row">
     <header class="col-12">
         {{-- <img src="https://cdn.iconscout.com/icon/free/png-256/laravel-226015.png" width="256" height="256"
@@ -26,6 +26,7 @@
         <table class="table">
             <thead class="thead-light">
                 <tr>
+                    <th scope="col">Capa</th>
                     <th scope="col">Título</th>
                     <th scope="col">Sinopse</th>
                     <th colspan="2" scope="col">Ações</th>
@@ -34,6 +35,7 @@
             <tbody>
                 @foreach($filmes as $filme)
                 <tr>
+                    <td scope="row"><img width="120" height="180" src="{{$filme->imagem}}" alt="Capa do filme"></td>
                     <td scope="row">{{$filme->titulo}}</td>
                     <td>{{$filme->sinopse}}</td>
                     <td>

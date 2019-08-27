@@ -5,7 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Filme;
 
-class FilmesController extends Controller
+class FilmeController extends Controller
 {
     public function listandoFilmes()
     {
@@ -25,12 +25,25 @@ class FilmesController extends Controller
     {
         $this->validate($request, [
             'titulo' => 'required|max:50',
-            'sinopse' => 'required|max:200'
+            'sinopse' => 'required|max:200',
+            'genero' => 'required',
+            'ator' => 'required'
         ]);
+
+        $arquivo = $request->file('imagem');
+        $nomePasta = "uploads";
+        $arquivo->storePublicly($nomePasta);
+        $caminhoAbsoluto = public_path() . "/storage/$nomePasta"; 
+        $nomeArquivo = $arquivo->getClientOriginalName();
+        $caminhoRelativo = "storage/$nomePasta/$nomeArquivo";
+        $arquivo->move($caminhoAbsoluto, $nomeArquivo);
 
         $filme = Filme::create([
             'titulo' => $request->input("titulo"),
-            'sinopse' => $request->input("sinopse")
+            'sinopse' => $request->input("sinopse"),
+            'imagem' => $caminhoRelativo,
+            'id_genero' => $request->input('genero'),
+            'id_protagonista' => $request->input('ator')
         ]);
 
         $filme->save();
@@ -48,13 +61,26 @@ class FilmesController extends Controller
     {
         $this->validate($request, [
             'titulo' => 'required|max:50',
-            'sinopse' => 'required|max:200'
+            'sinopse' => 'required|max:200',
+            'genero' => 'required',
+            'ator' => 'required'
         ]);
+
+        $arquivo = $request->file('imagem');
+        $nomePasta = "uploads";
+        $arquivo->storePublicly($nomePasta);
+        $caminhoAbsoluto = public_path() . "/storage/$nomePasta"; 
+        $nomeArquivo = $arquivo->getClientOriginalName();
+        $caminhoRelativo = "storage/$nomePasta/$nomeArquivo";
+        $arquivo->move($caminhoAbsoluto, $nomeArquivo);
 
         $filme = Filme::find($id);
 
         $filme->titulo = $request->input("titulo");
         $filme->sinopse = $request->input("sinopse");
+        $filme->imagem = $caminhoRelativo;
+        $filme->id_genero = $request->input('genero');
+        $filme->id_protagonista = $request->input('ator');
 
         $filme->save();
 

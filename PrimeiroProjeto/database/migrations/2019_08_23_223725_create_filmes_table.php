@@ -18,8 +18,8 @@ class CreateFilmesTable extends Migration
             $table->string('titulo');
             $table->string('sinopse');
             $table->string('imagem');
-            $table->unsignedInteger('id_protagonista');
-            $table->unsignedInteger('id_genero');
+            $table->unsignedBigInteger('id_protagonista');
+            $table->unsignedBigInteger('id_genero');
             $table->timestamps();
         });
     }
