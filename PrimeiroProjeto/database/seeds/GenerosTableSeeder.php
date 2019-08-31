@@ -12,28 +12,28 @@ class GenerosTableSeeder extends Seeder
      */
     public function run()
     {
-        Genero::updateOrCreate([
-            'descricao' => 'Romance'
+        Genero::create([
+            "descricao" => "Ação"
         ]);
 
-        Genero::updateOrCreate([
-            'descricao' => 'Drama'
+        Genero::create([
+            "descricao" => "Drama"
         ]);
 
-        Genero::updateOrCreate([
-            'descricao' => 'Ação'
+        Genero::create([
+            "descricao" => "Ficção"
         ]);
 
-        Genero::updateOrCreate([
-            'descricao' => 'Ficção'
+        Genero::create([
+            "descricao" => "Romance"
         ]);
 
-        Genero::updateOrCreate([
-            'descricao' => 'Terror'
+        Genero::create([
+            "descricao" => "Suspense"
         ]);
 
-        Genero::updateOrCreate([
-            'descricao' => 'Suspense'
+        Genero::create([
+            "descricao" => "Terror"
         ]);
     }
 }

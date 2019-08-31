@@ -12,12 +12,10 @@ class AtoresTableSeeder extends Seeder
      */
     public function run()
     {
-        Ator::updateOrCreate([
-            'nome' => 'Tom Cruise'
+        Ator::create([
+            "nome" => "Silvester Stalonge"
         ]);
 
-        Ator::updateOrCreate([
-            'nome' => 'Nicole Kidman'
-        ]);
+        factory(Ator::class, 9)->create();
     }
 }

@@ -6,8 +6,5 @@ use Illuminate\Http\Request;
 
 class GeneroController extends Controller
 {
-    public function testandoRelacionamentos()
-    {
-        
-    }
+    //
 }

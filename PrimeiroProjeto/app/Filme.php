@@ -6,9 +6,9 @@ use Illuminate\Database\Eloquent\Model;
 
 class Filme extends Model
 {
-    protected $table = 'filmes';
-    protected $primaryKey = 'id';
-    protected $fillable = ['titulo', 'sinopse', 'imagem', 'id_protagonista', 'id_genero'];
+    protected $table = "filmes";
+    protected $primaryKey = "id";
+    protected $fillable = ['titulo', 'sinopse', 'imagem', 'id_genero', 'id_protagonista'];
 
     public function genero(){
         return $this->hasOne(Genero::class, 'id', 'id_genero');
